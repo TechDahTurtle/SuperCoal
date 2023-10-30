@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import techdahturtle.super_coal.creativetab.ModCreativeTab;
 import techdahturtle.super_coal.item.ModItems;
 
 @Mod(SuperCoal.MOD_ID)
@@ -23,8 +24,8 @@ public class SuperCoal {
         //ModBlocks.register(modEventBus);
 
         // Register Creative Tab
-        //ModCreativeTabs.register(modEventBus);
-        //modEventBus.addListener(ModCreativeTabs::registerTabs);
+        ModCreativeTab.register(modEventBus);
+        modEventBus.addListener(ModCreativeTab::registerTabs);
 
         modEventBus.addListener(this::commonSetup);
 
