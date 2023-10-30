@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "super_coal:nether_coal_ore"
+  },
+  "result": "super_coal:nether_coal",
+  "experience": 0.1,
+  "cookingtime": 200
+}
