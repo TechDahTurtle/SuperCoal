@@ -21,6 +21,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> NETHER_COAL_BLOCK = registerBurnableBlock("nether_coal_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE)), 144);
     public static final RegistryObject<Block> COMPRESSED_NETHER_COAL_BLOCK = registerBurnableBlock("compressed_nether_coal_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE)), 1296);
     public static final RegistryObject<Block> COMPRESSED_COAL_BLOCK = registerBurnableBlock("compressed_coal_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE)), 648);
+    public static final RegistryObject<Block> NETHER_COAL_ORE = registerBlock("nether_coal_ore", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(3.0F, 3.0F).sound(SoundType.STONE)));
 
     /******************************** Registry ********************************/
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

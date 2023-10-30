@@ -29,6 +29,7 @@ public class ModCreativeTab {
             event.accept(ModBlocks.NETHER_COAL_BLOCK.get());
             event.accept(ModBlocks.COMPRESSED_NETHER_COAL_BLOCK.get());
             event.accept(ModBlocks.COMPRESSED_COAL_BLOCK.get());
+            event.accept(ModBlocks.NETHER_COAL_ORE.get());
         }
     }
 
