@@ -3,7 +3,8 @@
   "item.super_coal.tiny_nether_coal": "Tiny Nether Coal",
   "item.super_coal.nether_coal": "Nether Coal",
   "block.super_coal.nether_coal_block": "Nether Coal Block",
-  "block.super_coal.nether_coal_block": "Nether Coal Block",
+  "block.super_coal.compressed_nether_coal_block": "Compressed Nether Coal Block",
+  "block.super_coal.compressed_coal_block": "Compressed Coal Block",
 
   "itemGroup.super_coal": "Super Coal"
 }

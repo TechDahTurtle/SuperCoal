@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "super_coal:nether_coal_block"
+    "super_coal:nether_coal_block",
+    "super_coal:compressed_nether_coal_block",
+    "super_coal:compressed_coal_block"
   ]
 }
