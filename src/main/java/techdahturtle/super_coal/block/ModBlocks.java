@@ -11,18 +11,25 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import techdahturtle.super_coal.SuperCoal;
 import techdahturtle.super_coal.item.ModItems;
+import techdahturtle.super_coal.item.custom.BurnableBlockItem;
 
 import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, SuperCoal.MOD_ID);
 
-    public static final RegistryObject<Block> NETHER_COAL_BLOCK = registerBlock("nether_coal_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> NETHER_COAL_BLOCK = registerBurnableBlock("nether_coal_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE)), 144);
 
     /******************************** Registry ********************************/
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
+        return toReturn;
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBurnableBlock(String name, Supplier<T> block, int items) {
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        registerBurnableBlockItem(name, toReturn, items);
         return toReturn;
     }
 
@@ -32,6 +39,10 @@ public class ModBlocks {
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static <T extends Block> RegistryObject<Item> registerBurnableBlockItem(String name, RegistryObject<T> block, int items) {
+        return ModItems.ITEMS.register(name, () -> new BurnableBlockItem(block.get(), new Item.Properties(), items));
     }
 
     public static void register(IEventBus eventBus) {
