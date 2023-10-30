@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import techdahturtle.super_coal.SuperCoal;
+import techdahturtle.super_coal.block.ModBlocks;
 import techdahturtle.super_coal.item.ModItems;
 
 public class ModCreativeTab {
@@ -24,6 +25,8 @@ public class ModCreativeTab {
             event.accept(ModItems.NETHER_COAL.get());
             event.accept(ModItems.TINY_COAL.get());
             event.accept(ModItems.TINY_NETHER_COAL.get());
+
+            event.accept(ModBlocks.NETHER_COAL_BLOCK.get());
         }
     }
 
