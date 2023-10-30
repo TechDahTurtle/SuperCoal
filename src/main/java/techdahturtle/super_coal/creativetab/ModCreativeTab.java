@@ -21,6 +21,7 @@ public class ModCreativeTab {
 
     public static void registerTabs(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == SUPER_COAL_TAB.get()) {
+            event.accept(ModItems.NETHER_COAL.get());
             event.accept(ModItems.TINY_COAL.get());
             event.accept(ModItems.TINY_NETHER_COAL.get());
         }
