@@ -15,6 +15,6 @@ public class BurnableItem extends Item {
 
     @Override
     public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-        return items * 20;
+        return items * 200;
     }
 }
