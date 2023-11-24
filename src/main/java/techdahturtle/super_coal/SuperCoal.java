@@ -1,14 +1,10 @@
 package techdahturtle.super_coal;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import techdahturtle.super_coal.block.ModBlocks;
 import techdahturtle.super_coal.creativetab.ModCreativeTab;
 import techdahturtle.super_coal.item.ModItems;
@@ -17,8 +13,8 @@ import techdahturtle.super_coal.item.ModItems;
 public class SuperCoal {
     public static final String MOD_ID = "super_coal";
 
-    public SuperCoal() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public SuperCoal(IEventBus modEventBus) {
+        modEventBus.addListener(this::commonSetup);
 
         // Register Items
         ModItems.register(modEventBus);
@@ -28,9 +24,7 @@ public class SuperCoal {
         ModCreativeTab.register(modEventBus);
         modEventBus.addListener(ModCreativeTab::registerTabs);
 
-        modEventBus.addListener(this::commonSetup);
-
-        MinecraftForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {}
