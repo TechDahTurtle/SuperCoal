@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.45'
+    id 'net.neoforged.gradle.userdev' version '7.0.80'
 }
 
 version = mod_version
@@ -27,25 +27,19 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 runs {
     configureEach {
         systemProperty 'forge.logging.markers', 'REGISTRIES'
-
         systemProperty 'forge.logging.console.level', 'debug'
-
         modSource project.sourceSets.main
     }
-
     client {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
     }
-
     server {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
         programArgument '--nogui'
     }
-
     gameTestServer {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
     }
-
     data {
         programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
@@ -56,11 +50,11 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    // JEI (This is still set for 1.20.1)
-    //compileOnly "mezz.jei:jei-1.20.1-common-api:15.0.0.15"
-    //compileOnly "mezz.jei:jei-1.20.1-forge-api:15.0.0.15"
-    //runtimeOnly "mezz.jei:jei-1.20.1-common:15.0.0.15"
-    //runtimeOnly "mezz.jei:jei-1.20.1-forge:15.0.0.15"
+    // Example mod dependency with JEI
+    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
+    // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+    // compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
+    // runtimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -69,11 +63,11 @@ tasks.withType(ProcessResources).configureEach {
             neo_version         : neo_version, neo_version_range: neo_version_range,
             loader_version_range: loader_version_range,
             mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors         : mod_authors, mod_description: mod_description, pack_format_number: pack_format_number,
+            mod_authors         : mod_authors, mod_description: mod_description,
     ]
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+    filesMatching(['META-INF/mods.toml']) {
         expand replaceProperties + [project: project]
     }
 }
